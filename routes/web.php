@@ -13,22 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    function extractStringsInQuotation($input){
-        $pattern = '/(@\["table".+?(".+?")+\])/';
-        preg_match_all($pattern, $input, $matches, PREG_OFFSET_CAPTURE);
-        foreach($matches[1] as $k => $match){
-            echo 'LJ-';
-            echo $match[1];
-            echo '\n';
-            // $output = preg_replace_callback($pattern, $matches[2][0][0], $input);
-        }
+// Route::get('/window', function () {
+//     return view('test.window');
+// });
 
-        return [$input, preg_replace($pattern, "<table>,</table>", $input)];
-    }
-
-// Example usage:
-$input = '@["string1", "string2"] gjkdfla;sjka; @["table", "string2", "string3"] hsdjakfljsdka @["string1","asds","asds"] ghjkg @["string1"] --- @["string1"]';
-$result = extractStringsInQuotation($input);
-    return view('welcome',['d'=>$result]);
+Route::get('/editor', function () {
+    return view('test.editor');
 });
+
+Route::get('/interact', function () {
+    return view('test.interact');
+});
+
+Route::get('/test', function () {
+    return view('welcome');
+});
+
+//     function extractStringsInQuotation($input){
+//         $pattern = '/(@\["table".+?(".+?")+\])/';
+//         preg_match_all($pattern, $input, $matches, PREG_OFFSET_CAPTURE);
+//         foreach($matches[1] as $k => $match){
+//             // $output = preg_replace_callback($pattern, $matches[2][0][0], $input);
+//         }
+
+//         return [$input, preg_replace($pattern, "<table>,</table>", $input)];
+//     }
+
+// // Example usage:
+// $input = '@["string1", "string2"] gjkdfla;sjka; @["table", "string2", "string3"] hsdjakfljsdka @["string1","asds","asds"] ghjkg @["string1"] --- @["string1"]';
+// $result = extractStringsInQuotation($input);
+//     return view('welcome',['d'=>$result]);
+// });
